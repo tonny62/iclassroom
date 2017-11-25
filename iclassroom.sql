@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 25, 2017 at 09:13 AM
+-- Generation Time: Nov 25, 2017 at 01:05 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.6
 
@@ -61,6 +61,26 @@ INSERT INTO `homework` (`idhomework`, `idsection`, `idteacher`, `idsubject`, `to
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `log`
+--
+
+CREATE TABLE `log` (
+  `idlog` int(11) NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `iduser` varchar(20) NOT NULL,
+  `query` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `log`
+--
+
+INSERT INTO `log` (`idlog`, `timestamp`, `iduser`, `query`) VALUES
+(2, '2017-11-25 18:13:07', 'admin', 'UPDATE teacher SET idteacher=\'1000\', fname=\'kru1\', lname=\'naja\', idmajor=\'1\' WHERE idteacher = 1000;');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `major`
 --
 
@@ -74,6 +94,7 @@ CREATE TABLE `major` (
 --
 
 INSERT INTO `major` (`idmajor`, `majorname`) VALUES
+(0, 'admin'),
 (1, 'CPE'),
 (2, 'IT'),
 (3, 'CE'),
@@ -92,22 +113,23 @@ CREATE TABLE `section` (
   `idsubject` int(11) NOT NULL,
   `slot1` int(11) NOT NULL,
   `slot2` int(11) NOT NULL,
-  `idteacher` int(11) NOT NULL
+  `idteacher` int(11) NOT NULL,
+  `room` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `section`
 --
 
-INSERT INTO `section` (`idsection`, `numbersection`, `idsubject`, `slot1`, `slot2`, `idteacher`) VALUES
-(1, 1, 1, 1, 2, 1000),
-(2, 2, 1, 3, 4, 1000),
-(3, 1, 2, 3, 4, 1001),
-(4, 2, 2, 5, 6, 1001),
-(5, 2, 3, 10, 12, 1000),
-(6, 1, 3, 7, 9, 1001),
-(7, 1, 4, 16, 17, 1000),
-(8, 2, 4, 20, 21, 1001);
+INSERT INTO `section` (`idsection`, `numbersection`, `idsubject`, `slot1`, `slot2`, `idteacher`, `room`) VALUES
+(1, 1, 1, 1, 2, 1000, '101'),
+(2, 2, 1, 3, 4, 1000, '102'),
+(3, 1, 2, 3, 4, 1001, '103'),
+(4, 2, 2, 5, 6, 1001, '104'),
+(5, 2, 3, 10, 12, 1000, '105'),
+(6, 1, 3, 7, 9, 1001, '106'),
+(7, 1, 4, 16, 17, 1000, '107'),
+(8, 2, 4, 20, 21, 1001, '108');
 
 -- --------------------------------------------------------
 
@@ -155,11 +177,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`fname`, `lname`, `idstudent`, `personalid`, `idmajor`, `year`, `dob`, `status`, `degree`) VALUES
-('kriddanai', 'roonguthai', '5822780334', '1234', 1, 3, '2017-11-08', 'active', 'bachelor'),
-('wari', 'maroengsit', '5822771333', '1234', 1, 3, '2017-11-04', 'active', 'bachelor'),
-('dumdum1', 'dumdum1', '5811', '1', 2, 3, '2017-11-20', 'active', 'bachelor'),
-('dumdum2', 'dumdum2', '5812', '1', 2, 3, '2017-11-12', 'active', 'bachelor'),
-('dumdum3', 'dumdum1', '5013', '1', 4, 2, '2017-11-18', 'active', 'master');
+('admin2', 'admin', '5822771333', '11004', 1, 3, '2017-11-10', 'active', 'bachelor'),
+('admin2', 'admin', '5822780334', '11007', 1, 3, '2017-11-08', 'active', 'bachelor');
 
 -- --------------------------------------------------------
 
@@ -237,8 +256,9 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`idteacher`, `personalid`, `fname`, `lname`, `idmajor`) VALUES
-('1000', '1', 'kru1', 'naja', 1),
-('1001', '1', 'kru2', 'naja', 2);
+('1000', '1', 'admin23', 'admin', 1),
+('1001', '1', 'admin23', 'admin', 2),
+('admin', 'admin', 'admin23', 'admin', 0);
 
 -- --------------------------------------------------------
 
@@ -307,6 +327,12 @@ ALTER TABLE `homework`
   ADD PRIMARY KEY (`idhomework`);
 
 --
+-- Indexes for table `log`
+--
+ALTER TABLE `log`
+  ADD PRIMARY KEY (`idlog`);
+
+--
 -- Indexes for table `major`
 --
 ALTER TABLE `major`
@@ -317,6 +343,12 @@ ALTER TABLE `major`
 --
 ALTER TABLE `section`
   ADD PRIMARY KEY (`idsection`);
+
+--
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`idstudent`);
 
 --
 -- Indexes for table `subject`
@@ -346,10 +378,15 @@ ALTER TABLE `teacher`
 ALTER TABLE `homework`
   MODIFY `idhomework` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `log`
+--
+ALTER TABLE `log`
+  MODIFY `idlog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `major`
 --
 ALTER TABLE `major`
-  MODIFY `idmajor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idmajor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `section`
 --

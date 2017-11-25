@@ -18,7 +18,11 @@
 
 <body>
 
- <?php navbar(); ?>
+  <?php if (isset($_SESSION['user']['idteacher'])): ?>
+    <?php navbar_t(); ?>
+  <?php else: ?>
+    <?php navbar(); ?>
+  <?php endif; ?>
 
  <section class="section">
    <div class="container">
@@ -31,11 +35,12 @@
            <div class="columns">
              <div class="column is-4">
                <figure class="image is-128x128">
-                 <img src="https://bulma.io/images/placeholders/128x128.png">
+                 <!-- <img src="https://bulma.io/images/placeholders/128x128.png"> -->
                </figure>
              </div>
              <div class="column is-8">
                <div class="content">
+
                  Name : <?php echo $_SESSION['user']['fname'].' '.$_SESSION['user']['lname']; ?><br>
                  ID : <?php
                  if (isset($_SESSION['user']['idteacher'])) {

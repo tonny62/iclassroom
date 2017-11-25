@@ -3,6 +3,7 @@
   // uncomment line below to test logged in UI
   // $_SESSION['userinfo'] = 1;
     require_once('components.php');
+    // print_r($_SESSION['user']);
 
   ?>
 <!DOCTYPE html>
@@ -24,6 +25,8 @@
   <section class="section">
     <div class="container">
       <div class="columns is-multiline has-text-centered">
+        <?php if ($_SESSION['user']['idmajor'] != 0): ?>
+
         <div class="column is-one-third">
             <a href="thomework.php"><img src="pics/icon_homework.png" width="200" height="200"></a>
             <p>Homework</p>
@@ -44,6 +47,15 @@
             <a href="stafflist.php"><img src="pics/icon_teacher.png" width="200" height="200"></a>
             <p>Teacher Lists</p>
         </div>
+      <?php endif; ?>
+        
+        <?php if ($_SESSION['user']['idmajor'] == 0): ?>
+          <div class="column is-one-third">
+              <a href="sysadmin.php"><img src="pics/sysadmin.png" width="200" height="200"></a>
+              <p>System Administration</p>
+          </div>
+        <?php endif; ?>
+
       </div>
 
     </div>

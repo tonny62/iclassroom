@@ -19,7 +19,11 @@
 
 <body>
 
-  <?php navbar(); ?>
+  <?php if (isset($_SESSION['user']['idteacher'])): ?>
+    <?php navbar_t(); ?>
+  <?php else: ?>
+    <?php navbar(); ?>
+  <?php endif; ?>
 
   <section class="section">
     <div class="container">
