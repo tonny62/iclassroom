@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 25, 2017 at 01:05 PM
+-- Generation Time: Nov 25, 2017 at 03:06 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.6
 
@@ -104,6 +104,32 @@ INSERT INTO `major` (`idmajor`, `majorname`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `message`
+--
+
+CREATE TABLE `message` (
+  `idmessage` int(11) NOT NULL,
+  `idfrom` varchar(30) NOT NULL,
+  `idto` varchar(30) NOT NULL,
+  `topic` varchar(100) NOT NULL,
+  `message` varchar(500) NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`idmessage`, `idfrom`, `idto`, `topic`, `message`, `timestamp`) VALUES
+(1, '1001', '1002', 'Hi there', 'This is the first message ever!!', '2017-11-25 20:19:46'),
+(3, '1001', '5822780334', 'its me tonny', 'hithere tonny, love you xoxoxo tonny', '2017-11-25 20:45:10'),
+(4, '1001', '1001', 'RE:Hi there', 'im talking to myself', '2017-11-25 20:59:30'),
+(5, '1001', '1001', 'love you', 'yeyey', '2017-11-25 21:04:08'),
+(6, '1001', '5822780334', 'do you wanna build a snowman?', 'do you?', '2017-11-25 21:04:26');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `section`
 --
 
@@ -177,7 +203,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`fname`, `lname`, `idstudent`, `personalid`, `idmajor`, `year`, `dob`, `status`, `degree`) VALUES
-('admin2', 'admin', '5822771333', '11004', 1, 3, '2017-11-10', 'active', 'bachelor'),
+('tonny', 'admin', '5822771333', '11004', 1, 3, '2017-11-10', 'active', 'bachelor'),
 ('admin2', 'admin', '5822780334', '11007', 1, 3, '2017-11-08', 'active', 'bachelor');
 
 -- --------------------------------------------------------
@@ -339,6 +365,12 @@ ALTER TABLE `major`
   ADD PRIMARY KEY (`idmajor`);
 
 --
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`idmessage`);
+
+--
 -- Indexes for table `section`
 --
 ALTER TABLE `section`
@@ -387,6 +419,11 @@ ALTER TABLE `log`
 --
 ALTER TABLE `major`
   MODIFY `idmajor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `idmessage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `section`
 --
