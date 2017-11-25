@@ -91,18 +91,30 @@
          </h1>
        </div>
        <form class="" action="addremove.php" method="get">
-         <div class="select">
-           <select name='subid'>
-             <?php
-             $q = "SELECT * FROM subject";
-             $result = $mysqli->query($q);
-             while ($row=$result->fetch_array()) {
-               echo "<option value=".$row['idsubject'].">".$row['name']."</option>";
-             }
-              ?>
-           </select>
-         </div>
-         <input type="submit" value="View Sections" class="button">
+         <div class="content">
+         <?php if (isset($_GET['subid'])): ?>
+           <?php  $q = "SELECT * FROM subject WHERE idsubject = ".$_GET['subid'].";";
+           $result = $mysqli->query($q);
+           $row = $result->fetch_assoc();
+           echo "<h2>".$row['name']." ".$row['code']."</h2>";
+           ?>
+
+           </div>
+         <?php else: ?>
+           <div class="select">
+             <select name='subid'>
+               <?php
+               $q = "SELECT * FROM subject";
+               $result = $mysqli->query($q);
+               while ($row=$result->fetch_array()) {
+                 echo "<option value=".$row['idsubject'].">".$row['name']."</option>";
+               }
+                ?>
+             </select>
+           </div>
+           <input type="submit" value="View Sections" class="button">
+         <?php endif; ?>
+
        </form>
        <?php if (isset($_GET['status'])): ?>
          <div class="content">
@@ -126,6 +138,7 @@
              </select>
            </div>
            <input type="submit" value="Add Section" class="button">
+           <a href="addremove.php" class="button">Reselect Subject</a>
            <?php
            print_r($row);
             ?>

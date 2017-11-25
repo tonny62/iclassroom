@@ -3,7 +3,7 @@
   // uncomment line below to test logged in UI
   // $_SESSION['userinfo'] = 1;
     require_once('components.php');
-  
+    // print_r($_SESSION['user']);
   ?>
 <!DOCTYPE html>
 <html>
@@ -36,10 +36,10 @@
             <a href="mailbox.php?tab=view"><img src="pics/icon_mailbox.png" width="200" height="200"></a>
             <p>Mailbox</p>
         </div>
-        <div class="column is-one-third">
+        <!-- <div class="column is-one-third">
             <a href="bulletin.php"><img src="pics/icon_messageboard.png" width="200" height="200"></a>
             <p>Bulletin Board</p>
-        </div>
+        </div> -->
         <div class="column is-one-third">
             <a href="studentlist.php"><img src="pics/icon_student.png" width="200" height="200"></a>
             <p>Student Lists</p>

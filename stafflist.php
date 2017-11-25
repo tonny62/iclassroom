@@ -1,5 +1,7 @@
 <?php
   require_once('components.php');
+  require_once('connect.php');
+  session_start();
 ?>
 
 <!DOCTYPE html>
@@ -15,8 +17,11 @@
 </head>
 
 <body>
-
- <?php navbar(); ?>
+  <?php if (isset($_SESSION['user']['idstudent'])): ?>
+    <?php navbar(); ?>
+  <?php else: ?>
+    <?php navbar_t(); ?>
+  <?php endif; ?>
 
  <section class="section">
    <div class="container">
@@ -35,18 +40,13 @@
              </tr>
            </thead>
            <tbody>
-             <tr>
-               <td>5822780334</td>
-               <td>Wari Maroengsit</td>
-               <td><a href="" class="button is-link">SEE</a></td>
-               <td><a href="" class="button is-warning">SENT</a></td>
-             </tr>
-             <tr>
-               <td>5822780334</td>
-               <td>Kriddanai Roonguthai</td>
-               <td><a href="" class="button is-link">SEE</a></td>
-               <td><a href="" class="button is-warning">SENT</a></td>
-             </tr>
+             <?php
+             $q = "SELECT * FROM teacher WHERE idmajor='".$_SESSION['user']['idmajor']."';";
+             $result = $mysqli->query($q);
+             while ($row = $result->fetch_array()) {
+               echo "<tr><td>".$row['idteacher']."</td><td>".$row['fname']." ".$row['lname']."</td><td><a href='otimetable.php?id=".$row['idteacher']."' class='button is-link'>See Schedule</a></td><td><a href='mailbox.php?tab=create&id=".$row['idteacher']."' class='button is-primary'>Send Message</a></td></tr>";
+             }
+              ?>
            </tbody>
          </table>
        </div>

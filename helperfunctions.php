@@ -33,7 +33,70 @@
         $time = "Tuesday 14.40 -> 16.00";
         return $time;
         break;
-
+      case '9':
+        $time = "Wednesday 9.00 -> 11.20";
+        return $time;
+        break;
+      case '10':
+        $time = "Wednesday 11.40 -> 12.00";
+        return $time;
+        break;
+      case '11':
+        $time = "Wednesday 13.00 -> 14.20";
+        return $time;
+        break;
+      case '12':
+        $time = "Wednesday 14.40 -> 16.00";
+        return $time;
+        break;
+      case '13':
+        $time = "Thursday 9.00 -> 11.20";
+        return $time;
+        break;
+      case '14':
+        $time = "Thursday 11.40 -> 12.00";
+        return $time;
+        break;
+      case '15':
+        $time = "Thursday 13.00 -> 14.20";
+        return $time;
+        break;
+      case '16':
+        $time = "Thursday 14.40 -> 16.00";
+        return $time;
+        break;
+      case '17':
+        $time = "Friday 9.00 -> 11.20";
+        return $time;
+        break;
+      case '18':
+        $time = "Friday 11.40 -> 12.00";
+        return $time;
+        break;
+      case '19':
+        $time = "Friday 13.00 -> 14.20";
+        return $time;
+        break;
+      case '20':
+        $time = "Friday 14.40 -> 16.00";
+        return $time;
+        break;
+      case '21':
+        $time = "Saturday 9.00 -> 11.20";
+        return $time;
+        break;
+      case '22':
+        $time = "Saturday 11.40 -> 12.00";
+        return $time;
+        break;
+      case '23':
+        $time = "Saturday 13.00 -> 14.20";
+        return $time;
+        break;
+      case '24':
+        $time = "Saturday 14.40 -> 16.00";
+        return $time;
+        break;
       default:
         echo "NAN";
         break;

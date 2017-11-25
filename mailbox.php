@@ -80,7 +80,11 @@
             <div class="field">
               <label class="label">ID To</label>
               <div class="control">
-                <input class="input" type="text" placeholder="ID">
+                <?php if (isset($_GET['id'])): ?>
+                  <input class="input" type="text" placeholder="ID" value="<?php echo $_GET['id']; ?>">
+                <?php else: ?>
+                  <input class="input" type="text" placeholder="ID">
+                <?php endif; ?>
               </div>
             </div>
             <div class="field">

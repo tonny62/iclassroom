@@ -19,26 +19,22 @@
 
 <body>
 
-  <?php navbar(); ?>
+  <?php navbar_t(); ?>
 
   <section class="section">
     <div class="container">
       <div class="columns is-multiline has-text-centered">
         <div class="column is-one-third">
-            <a href="homework.php"><img src="pics/icon_homework.png" width="200" height="200"></a>
+            <a href="thomework.php"><img src="pics/icon_homework.png" width="200" height="200"></a>
             <p>Homework</p>
         </div>
         <div class="column is-one-third">
-            <a href="timetable.php"><img src="pics/icon_timetable.png" width="200" height="200"></a>
+            <a href="ttimetable.php"><img src="pics/icon_timetable.png" width="200" height="200"></a>
             <p>Timetable</p>
         </div>
         <div class="column is-one-third">
             <a href="mailbox.php?tab=view"><img src="pics/icon_mailbox.png" width="200" height="200"></a>
             <p>Mailbox</p>
-        </div>
-        <div class="column is-one-third">
-            <a href="bulletin.php"><img src="pics/icon_messageboard.png" width="200" height="200"></a>
-            <p>Bulletin Board</p>
         </div>
         <div class="column is-one-third">
             <a href="studentlist.php"><img src="pics/icon_student.png" width="200" height="200"></a>
